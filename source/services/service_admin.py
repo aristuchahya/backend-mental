@@ -97,15 +97,13 @@ class ServiceAdmin:
         db.commit()
     
     def get_assesments(self, db: Session):
-        try:
+
             return db.query(Assesment).all()
 
-        except Exception as e:
-            db.rollback()
-            raise e
+
     
     def get_assesment_by_user(self, db: Session, user_id: str):
-        try:
+
             assesment = db.query(Assesment).filter(Assesment.user_id == user_id).first()
 
             if not assesment:
@@ -113,28 +111,21 @@ class ServiceAdmin:
 
             return assesment
 
-        except Exception as e:
-            db.rollback()
-            raise e
+
     
     def get_questions(self, db: Session):
-        try:
+
             return db.query(Question).all()
 
-        except Exception as e:
-            db.rollback()
-            raise e
 
     def get_rules(self, db: Session):
-        try:
+
             return db.query(Rule).all()
 
-        except Exception as e:
-            db.rollback()
-            raise e
+
     
     def create_rule(self, db: Session, payload: RuleRequest):
-        try:
+
             rule = Rule(
                 category=payload.category,
                 min_score=payload.min_score,
@@ -152,12 +143,10 @@ class ServiceAdmin:
                 "data": rule
             }
 
-        except Exception as e:
-            db.rollback()
-            raise e
+
     
     def get_rule_by_id(self, db: Session, rule_id: str):
-        try:
+
             rule = db.query(Rule).filter(Rule.id == rule_id).first()
 
             if not rule:
@@ -165,12 +154,10 @@ class ServiceAdmin:
 
             return rule
 
-        except Exception as e:
-            db.rollback()
-            raise e
+
     
     def update_rule(self, db: Session, rule_id: str, payload: RuleRequest):
-        try:
+        
             rule = db.query(Rule).filter(Rule.id == rule_id).first()
 
             if not rule:
@@ -190,12 +177,7 @@ class ServiceAdmin:
                 "data": rule
             }
 
-        except Exception as e:
-            db.rollback()
-            raise e
-    
     def delete_rule(self, db: Session, rule_id: str):
-        try:
             rule = db.query(Rule).filter(Rule.id == rule_id).first()
 
             if not rule:
@@ -209,20 +191,16 @@ class ServiceAdmin:
                 "message": "Rule successfully deleted"
             }
 
-        except Exception as e:
-            db.rollback()
-            raise e
+
     
     def get_mental_disorders(self, db: Session):
-        try:
+        
             return db.query(MentalDisorder).all()
 
-        except Exception as e:
-            db.rollback()
-            raise e
+        
     
     def get_mental_by_id(self, db: Session, mental_id: str):
-        try:
+        
             mental = db.query(MentalDisorder).filter(MentalDisorder.id == mental_id).first()
 
             if not mental:
@@ -230,9 +208,7 @@ class ServiceAdmin:
 
             return mental
 
-        except Exception as e:
-            db.rollback()
-            raise e
+
     
     def create_mental_disorder(self, db: Session, payload: MentalDisorderRequest):
         try:
