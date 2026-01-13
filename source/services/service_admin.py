@@ -278,6 +278,7 @@ class ServiceAdmin:
                 {
                     "id": diagnosis.id,
                     "nama": user.nama,
+                    "tanggal": user.tanggal,
                     "category": mental.category,
                     "level": mental.level,
                     "disease": mental.name,
