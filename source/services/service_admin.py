@@ -276,6 +276,7 @@ class ServiceAdmin:
             "status": "success",
             "results": [
                 {
+                    "id": diagnosis.id,
                     "nama": user.nama,
                     "category": mental.category,
                     "level": mental.level,
