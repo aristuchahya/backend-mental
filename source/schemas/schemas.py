@@ -14,13 +14,13 @@ class UserRequest(BaseModel):
     nama : str
     jenis_kelamin : str
     umur : int
-    noip : str
+    noip : Optional[str] = None
     tanggal : datetime
     whatsapp : str
     nama_orangtua : Optional[str]
     prodi : Optional[str]
     semester : Optional[str]
-    asuransi : Optional[str]
+    asuransi : Optional[str] = None
 
 class UserResponse(UserRequest):
     id : str
